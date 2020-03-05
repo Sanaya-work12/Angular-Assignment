@@ -1,0 +1,15 @@
+/* ----------------------------------------------------------------------------- *\
+   Mixins
+\* ----------------------------------------------------------------------------- */
+
+@mixin container {
+    margin: 0 auto;
+    width: auto;
+    position: relative;
+    max-width: 1170px;
+    padding: 0 15px;
+
+    @media (min-width: $screen-sm) {
+        padding: 0 30px;
+    }
+}

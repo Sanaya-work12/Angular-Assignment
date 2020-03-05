@@ -1,0 +1,83 @@
+<div class="profile-container container">
+    <!-- <div class="filter-profiles" *ngFor="let profile of (profiles$ | async)">
+            <div>
+                <span class="sub-heading">
+                    Species
+                </span>
+                <div *ngFor="let filterItem of filterItems">
+                    <input type="checkbox" name="human" [(ngModel)]="filterItem.checked" [value]="human">
+                    <label for="human" class="ftr-lbl">{{filterItem}}</label>
+                    <input type="checkbox" name="mytholog" [(ngModel)]="mytholog.checked" [value]="mytholog">
+                    <label for="mytholog" class="ftr-lbl">Mytholog</label>
+                    <input type="checkbox" name="other-species" [(ngModel)]="otherSpecies.checked" [value]="otherSpecies">    
+                    <label for="other-species" class="ftr-lbl">Other Species</label>
+                </div>
+            </div>
+            
+            <div>
+                <span class="sub-heading">
+                    Gender
+                </span>
+                <input type="checkbox" name="male">
+                <label for="male" class="ftr-lbl">Male</label>
+                <input type="checkbox" name="female">
+                <label for="female" class="ftr-lbl">Female</label>
+            </div>
+            
+            <div>
+                <span class="sub-heading">
+                    Origin
+                </span>
+                <input type="checkbox" name="unknown">
+                <label for="unknown" class="ftr-lbl">Unknown</label>
+                <input type="checkbox" name="p-apocalyptic">
+                <label for="p-apocalyptic" class="ftr-lbl">Post-Apocalyptic</label>
+                <input type="checkbox" name="nuptia">
+                <label for="nuptia" class="ftr-lbl">Nuptia 4</label>
+                <input type="checkbox" name="other-origins">
+                <label for="other-origins" class="ftr-lbl">Other Origins</label>
+            </div>
+        </div>
+        <div class="selected-filters">
+            Selected items: 
+            <span *ngFor="let filterItem of checked()">{{ filterItem.value }}</span>
+        </div> -->
+    <div class="search-name">
+        <form [formGroup]="group">
+            <label for="search-name"> Search By Name</label>
+            <input name="search-name" formControlName="search" type="text" />
+        </form>
+    </div>
+    <div class="sort-order">
+        <label for="sort"> Sort By Id</label>
+        <select [(ngModel)]="sortingOrder" name="sort">
+            <option value="asc" selected="selected">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+    </div>
+    <div class="view-profiles">
+        <div class="row">
+            <div class="column">
+                <div class="profile-info" *ngFor="let profile of (profiles$ | async | sort:'name': sortingOrder)">
+                    <div class="border-modify">
+                        <img class="profile-image" src={{profile.image}} />
+                        <div class="headings">
+                            <h2 class="profile-name">
+                                {{profile.name}}
+                            </h2>
+                            <br>
+                            <h3 class="profile-id">Id: {{profile.id}} created 2 years ago</h3>
+                        </div>
+                        <div class="profile-details">
+                            <p>Status <span>{{profile.status}}</span></p>
+                            <p>Species <span>{{profile.species}}</span></p>
+                            <p>Gender<span>{{profile.gender}}</span></p>
+                            <p>Origin <span>{{profile.origin.name}}</span></p>
+                            <p>Last Location <span>{{profile.location.name}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
